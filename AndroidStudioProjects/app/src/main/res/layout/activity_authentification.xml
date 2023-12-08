@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back2" />
+
+    <View
+        android:id="@+id/top_space"
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:background="@color/transparent" />
+
+    <TextView
+        android:id="@+id/title_textview"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="45dp"
+        android:text="Bienvenue"
+        android:textColor="@android:color/white"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/email_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="155dp"
+        android:hint="Adresse e-mail"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/password_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="200dp"
+        android:hint="Mot de passe"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textSize="18sp" />
+
+    <ToggleButton
+        android:id="@+id/password_toggle_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/password_edittext"
+        android:layout_alignBottom="@id/password_edittext"
+        android:layout_alignEnd="@id/password_edittext"
+        android:background="@android:color/transparent"
+        android:textOff="Afficher"
+        android:textOn="Cacher" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="260dp"
+        android:text="Se connecter"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/forgot_password_button"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password_edittext"
+        android:layout_alignStart="@id/password_edittext"
+        android:layout_marginStart="-41dp"
+        android:layout_marginTop="72dp"
+        android:background="@android:color/transparent"
+        android:text="Mot de passe oublié?"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_button"
+        android:layout_alignStart="@id/login_button"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-18dp"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="18dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Vous n'avez pas un compte ? "
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="158dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="S'inscrire"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+</RelativeLayout>

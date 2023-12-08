@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/back1"
+tools:context="com.example.neurosight.Bienvenue">
+
+<LinearLayout
+    android:id="@+id/linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:layout_centerVertical="true"
+    android:orientation="vertical"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <!-- Utiliser un View pour créer un espace vertical -->
+
+    <TextView
+        android:id="@+id/welcome_title"
+        android:layout_width="wrap_content"
+        android:layout_height="102dp"
+        android:layout_gravity="center_horizontal|top"
+        android:paddingTop="5dp"
+        android:paddingBottom="8dp"
+        android:text="NeuroSight"
+        android:textColor="@android:color/white"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/welcome_subtitle"
+        android:layout_width="389dp"
+        android:layout_height="231dp"
+        android:gravity="center"
+        android:text="Gardez un œil sur les signaux électrophysiologiques en tout temps"
+        android:textColor="@android:color/white"
+        android:textSize="25sp" />
+
+</LinearLayout>
+
+<Button
+    android:id="@+id/next_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentEnd="true"
+    android:layout_marginTop="40dp"
+    android:layout_marginEnd="20dp"
+    android:text="S'inscrire" />
+
+</RelativeLayout>

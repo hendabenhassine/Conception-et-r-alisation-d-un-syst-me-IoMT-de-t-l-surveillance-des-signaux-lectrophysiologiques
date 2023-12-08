@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "790565617231",
+    "project_id": "neurosight-be4c5",
+    "storage_bucket": "neurosight-be4c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790565617231:android:d81464f0e9f7106242b43a",
+        "android_client_info": {
+          "package_name": "com.example.neurosight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790565617231-8c4fk47ln1inmsk8bjq3baf2n3qh3bus.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBYOh5FWxIB-3dSrGP5e5UhAP9zW4hbqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790565617231-8c4fk47ln1inmsk8bjq3baf2n3qh3bus.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

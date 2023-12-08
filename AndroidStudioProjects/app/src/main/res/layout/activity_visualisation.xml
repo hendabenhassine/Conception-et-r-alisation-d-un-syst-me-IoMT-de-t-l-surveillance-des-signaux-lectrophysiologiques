@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Visualisation">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+        <TextView
+            android:id="@+id/textViewECG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Signal ECG : "
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="22dp" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartECG"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/textViewECG"
+            android:layout_marginTop="25dp" />
+
+        <TextView
+            android:id="@+id/textViewEEG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chartECG"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Signal EEG : "
+            android:textSize="20sp" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartEEG"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/textViewEEG"
+            android:layout_marginTop="25dp" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

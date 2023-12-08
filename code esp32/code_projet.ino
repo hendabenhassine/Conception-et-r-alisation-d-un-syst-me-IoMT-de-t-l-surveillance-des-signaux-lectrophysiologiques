@@ -2,15 +2,15 @@
 #include <WiFiUdp.h>
 #include <PubSubClient.h>
 #include <NTPClient.h>
-#include <Adafruit_SSD1306.h> // Bibliothèque pour l'afficheur OLED
+#include <Adafruit_SSD1306.h>
+// Inclusion des librairies nécessaires pour gérer le Wi-Fi, MQTT, NTP et l'affichage OLED.
 
 #define SAMPLE_RATE_ECG 125
 #define SAMPLE_RATE_EEG 256
 #define BAUD_RATE 115200
 #define ECG_INPUT_PIN A0
 #define EEG_INPUT_PIN 34
-#define LED_PIN 32 // Pin de la LED
-
+#define LED_PIN 32
 #define WIFISSID "TT_1220"
 #define PASSWORD  "igwpmuf95c"
 #define TOKEN "BBFF-6O22nWHv61gGfofZ8sXEl2qEywi5z3"
@@ -18,7 +18,7 @@
 #define ECG_VARIABLE_LABEL "donnees_ecg"
 #define EEG_VARIABLE_LABEL "donnees_eeg"
 #define DEVICE_LABEL "NeuroSight"
-
+// Définition des constantes, y compris la fréquence d'échantillonnage, les broches, les informations Wi-Fi et MQTT.
 
 const char* mqttBroker = "industrial.api.ubidots.com";
 char topic[200];
@@ -31,25 +31,25 @@ double current_millis = 0;
 double current_millis_at_sensordata = 0;
 double timestampp = 0;
 int j = 0;
+// Déclaration de variables globales pour stocker diverses informations, y compris le broker MQTT, les sujets, les données de capteur, etc.
 
 WiFiClient ubidots;
 PubSubClient client(ubidots);
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org");
+// Création d'objets pour gérer le client Wi-Fi, le client MQTT, et le client NTP.
 
 #define OLED_WIDTH 128
 #define OLED_HEIGHT 64
-Adafruit_SSD1306 display(OLED_WIDTH, OLED_HEIGHT, &Wire, -1); // Initialisation de l'afficheur OLED
+Adafruit_SSD1306 display(OLED_WIDTH, OLED_HEIGHT, &Wire, -1);
+// Initialisation de l'afficheur OLED.
 
 void callback(char* topic, byte* payload, unsigned int length) {
-  char p[length + 1];
-  memcpy(p, payload, length);
-  p[length] = NULL;
-  Serial.write(payload, length);
-  Serial.println(topic);
+  // Fonction de rappel appelée lorsqu'un message MQTT est reçu.
 }
 
 void reconnect() {
+  // Fonction pour reconnecter le client MQTT à Ubidots en cas de déconnexion.
   while (!client.connected()) {
     Serial.println("Tentative de connexion MQTT...");
     if (client.connect(MQTT_CLIENT_NAME, TOKEN, "")) {
@@ -64,12 +64,13 @@ void reconnect() {
 }
 
 void setup() {
+  // Configuration initiale au démarrage.
   Serial.begin(BAUD_RATE);
   WiFi.begin(WIFISSID, PASSWORD);
   pinMode(ECG_INPUT_PIN, INPUT);
   pinMode(EEG_INPUT_PIN, INPUT);
-  pinMode(LED_PIN, OUTPUT); // Configuration du pin de la LED en sortie
-  digitalWrite(LED_PIN, HIGH); // Allumer la LED
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, HIGH);
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
     delay(500);
@@ -89,19 +90,17 @@ void setup() {
   current_millis = millis();
   Serial.print("current_millis=");
   Serial.println(current_millis);
-
-  // Initialisation de l'afficheur OLED
   if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("Erreur lors de l'initialisation de l'afficheur OLED"));
     while (true);
   }
-
   display.clearDisplay();
   display.setTextColor(WHITE);
   display.setTextSize(1);
 }
 
 void loop() {
+  // Boucle principale qui lit les signaux, les filtre, les publie sur MQTT, et les affiche sur l'afficheur OLED.
   if (!client.connected()) {
     reconnect();
     j = 0;
@@ -129,8 +128,6 @@ void loop() {
     Serial.println(payload);
     client.publish(topic, payload);
     client.loop();
-
-    // Affichage du signal ECG sur l'afficheur OLED
     display.clearDisplay();
     display.setCursor(0, 0);
     display.print("ECG: ");
@@ -149,8 +146,6 @@ void loop() {
     Serial.println(payload);
     client.publish(topic, payload);
     client.loop();
-
-    // Affichage du signal EEG sur l'afficheur OLED
     display.clearDisplay();
     display.setCursor(0, 20);
     display.print("EEG: ");
@@ -160,6 +155,7 @@ void loop() {
 }
 
 float ECGFilter(float input) {
+  // Fonction de filtre pour le signal ECG.
   float output = input;
   {
     static float z1, z2;
@@ -193,6 +189,7 @@ float ECGFilter(float input) {
 }
 
 float EEGFilter(float input) {
+  // Fonction de filtre pour le signal EEG.
   float output = input;
   {
     static float z1, z2;
@@ -224,3 +221,4 @@ float EEGFilter(float input) {
   }
   return output;
 }
+// Fin du code.

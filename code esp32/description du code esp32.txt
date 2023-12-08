@@ -1,0 +1,5 @@
+// Ce code, écrit en C++, est destiné à une carte ESP32. Son objectif est de lire et filtrer les signaux électrophysiologiques (ECG et EEG) à partir de broches analogiques. 
+// Les signaux sont ensuite publiés en temps réel sur la plateforme Ubidots via MQTT. L'ESP32 communique avec le réseau Wi-Fi, récupère l'heure via NTP, et affiche simultanément les signaux sur un écran OLED. 
+// Le programme utilise des fonctions de rappel pour MQTT, une fonction de reconnexion, et des filtres spécifiques ECGFilter() et EEGFilter(). 
+// Les constantes définissent la fréquence d'échantillonnage, les broches utilisées, les informations Wi-Fi et MQTT. 
+// La configuration initiale (setup) inclut l'initialisation des objets, tandis que la boucle principale (loop) gère la lecture des signaux, la publication MQTT, et l'affichage OLED.
